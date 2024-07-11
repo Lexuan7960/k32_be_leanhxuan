@@ -61,8 +61,9 @@ const updateMovie = async (req, res) => {
         return
     }
     await checkMovieInDb.updateOne({ title, year, poster })
+    const updatedMovie = await Movies.findById(id)
     handleResponseSuccess(res, 200, "Update movie successfully", { 
-       ...checkMovieInDb._doc
+       ...updatedMovie._doc
      })
 }
 
